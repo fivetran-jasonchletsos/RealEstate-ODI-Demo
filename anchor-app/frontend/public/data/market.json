@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-05-21T06:15:00+00:00",
+  "as_of": "2026-05-20",
+  "cap_rate_trends": [
+    { "metro": "NYC", "asset_class": "office",       "cap_rate_2024": 5.6, "cap_rate_2025": 6.4, "cap_rate_2026": 7.1, "delta_bps_yoy": 70 },
+    { "metro": "NYC", "asset_class": "industrial",   "cap_rate_2024": 5.1, "cap_rate_2025": 5.4, "cap_rate_2026": 5.5, "delta_bps_yoy": 10 },
+    { "metro": "NYC", "asset_class": "multifamily",  "cap_rate_2024": 4.8, "cap_rate_2025": 5.0, "cap_rate_2026": 5.1, "delta_bps_yoy": 10 },
+    { "metro": "SF",  "asset_class": "office",       "cap_rate_2024": 6.1, "cap_rate_2025": 7.4, "cap_rate_2026": 8.2, "delta_bps_yoy": 80 },
+    { "metro": "SF",  "asset_class": "industrial",   "cap_rate_2024": 4.9, "cap_rate_2025": 5.2, "cap_rate_2026": 5.4, "delta_bps_yoy": 20 },
+    { "metro": "CHI", "asset_class": "office",       "cap_rate_2024": 7.4, "cap_rate_2025": 8.1, "cap_rate_2026": 8.6, "delta_bps_yoy": 50 },
+    { "metro": "CHI", "asset_class": "industrial",   "cap_rate_2024": 5.8, "cap_rate_2025": 6.0, "cap_rate_2026": 6.1, "delta_bps_yoy": 10 },
+    { "metro": "BOS", "asset_class": "office",       "cap_rate_2024": 5.9, "cap_rate_2025": 6.6, "cap_rate_2026": 7.0, "delta_bps_yoy": 40 },
+    { "metro": "DC",  "asset_class": "office",       "cap_rate_2024": 6.4, "cap_rate_2025": 7.0, "cap_rate_2026": 7.4, "delta_bps_yoy": 40 },
+    { "metro": "SEA", "asset_class": "office",       "cap_rate_2024": 6.0, "cap_rate_2025": 6.8, "cap_rate_2026": 7.2, "delta_bps_yoy": 40 },
+    { "metro": "ATL", "asset_class": "office",       "cap_rate_2024": 7.2, "cap_rate_2025": 7.9, "cap_rate_2026": 8.4, "delta_bps_yoy": 50 },
+    { "metro": "ATL", "asset_class": "industrial",   "cap_rate_2024": 5.9, "cap_rate_2025": 6.2, "cap_rate_2026": 6.3, "delta_bps_yoy": 10 },
+    { "metro": "DAL", "asset_class": "industrial",   "cap_rate_2024": 5.5, "cap_rate_2025": 5.8, "cap_rate_2026": 5.9, "delta_bps_yoy": 10 },
+    { "metro": "AUS", "asset_class": "office",       "cap_rate_2024": 6.4, "cap_rate_2025": 7.3, "cap_rate_2026": 7.8, "delta_bps_yoy": 50 },
+    { "metro": "PHX", "asset_class": "industrial",   "cap_rate_2024": 5.4, "cap_rate_2025": 5.7, "cap_rate_2026": 5.8, "delta_bps_yoy": 10 }
+  ],
+  "supply_pipeline": [
+    { "metro": "NYC", "asset_class": "office",      "new_starts_sqft_2026": 1200000,  "deliveries_sqft_2026": 2400000,  "as_pct_of_inventory": 0.5 },
+    { "metro": "SF",  "asset_class": "office",      "new_starts_sqft_2026": 180000,   "deliveries_sqft_2026": 920000,   "as_pct_of_inventory": 0.7 },
+    { "metro": "DAL", "asset_class": "industrial",  "new_starts_sqft_2026": 22000000, "deliveries_sqft_2026": 28000000, "as_pct_of_inventory": 4.1 },
+    { "metro": "PHX", "asset_class": "industrial",  "new_starts_sqft_2026": 14000000, "deliveries_sqft_2026": 18000000, "as_pct_of_inventory": 5.8 },
+    { "metro": "ATL", "asset_class": "industrial",  "new_starts_sqft_2026": 9000000,  "deliveries_sqft_2026": 12000000, "as_pct_of_inventory": 2.9 },
+    { "metro": "AUS", "asset_class": "office",      "new_starts_sqft_2026": 410000,   "deliveries_sqft_2026": 1100000,  "as_pct_of_inventory": 1.6 },
+    { "metro": "MIA", "asset_class": "multifamily", "new_starts_sqft_2026": 11000000, "deliveries_sqft_2026": 14000000, "as_pct_of_inventory": 3.2 }
+  ],
+  "market_rent_trajectory": [
+    { "metro": "NYC", "asset_class": "office",      "rent_2024_psf": 76, "rent_2025_psf": 72, "rent_2026_psf": 71, "yoy_change_pct": -1.4 },
+    { "metro": "SF",  "asset_class": "office",      "rent_2024_psf": 82, "rent_2025_psf": 74, "rent_2026_psf": 69, "yoy_change_pct": -6.8 },
+    { "metro": "BOS", "asset_class": "office",      "rent_2024_psf": 64, "rent_2025_psf": 63, "rent_2026_psf": 64, "yoy_change_pct": 1.6 },
+    { "metro": "CHI", "asset_class": "office",      "rent_2024_psf": 38, "rent_2025_psf": 36, "rent_2026_psf": 35, "yoy_change_pct": -2.8 },
+    { "metro": "AUS", "asset_class": "office",      "rent_2024_psf": 52, "rent_2025_psf": 49, "rent_2026_psf": 47, "yoy_change_pct": -4.1 },
+    { "metro": "DAL", "asset_class": "industrial",  "rent_2024_psf": 9.40, "rent_2025_psf": 9.85, "rent_2026_psf": 10.10, "yoy_change_pct": 2.5 },
+    { "metro": "PHX", "asset_class": "industrial",  "rent_2024_psf": 10.20, "rent_2025_psf": 10.60, "rent_2026_psf": 10.85, "yoy_change_pct": 2.4 },
+    { "metro": "ATL", "asset_class": "industrial",  "rent_2024_psf": 7.90, "rent_2025_psf": 8.20, "rent_2026_psf": 8.35, "yoy_change_pct": 1.8 },
+    { "metro": "MIA", "asset_class": "multifamily", "rent_2024_psf": 38, "rent_2025_psf": 39, "rent_2026_psf": 41, "yoy_change_pct": 5.1 }
+  ],
+  "below_market_agent": {
+    "title": "Leasing-velocity agent flag — properties priced 8%+ below current market clearing",
+    "as_of": "2026-05-20",
+    "candidates": [
+      { "property_id": "AP-1003", "name": "One Embarcadero South",        "metro": "SF",  "asset_class": "office",     "asking_psf": 84.0, "market_psf": 76.5, "delta_pct": 9.8, "rationale": "Pre-existing pricing set in 2024. Sublease overhang in submarket has reset clearing rate." },
+      { "property_id": "AP-1027", "name": "Skyline 500",                  "metro": "ATL", "asset_class": "office",     "asking_psf": 38.5, "market_psf": 35.0, "delta_pct": 10.0, "rationale": "Concessions package non-competitive; tour velocity 38% below market average." },
+      { "property_id": "AP-1015", "name": "Eastgate Distribution Center", "metro": "DAL", "asset_class": "industrial", "asking_psf": 9.20, "market_psf": 10.05, "delta_pct": -8.5, "rationale": "Asking below market — opportunity to push rents on next renewal cycle. Modeled $1.4M annual NOI lift." },
+      { "property_id": "AP-1011", "name": "Liberty Center II",            "metro": "CHI", "asset_class": "office",     "asking_psf": 41.0, "market_psf": 38.2, "delta_pct": 7.3, "rationale": "Within market band. Hold pricing." }
+    ]
+  }
+}

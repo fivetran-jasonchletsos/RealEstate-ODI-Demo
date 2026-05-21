@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-05-21T06:15:00+00:00",
+  "as_of": "2026-05-20",
+  "tables": [
+    { "database": "bronze", "table": "yardi_voyager_rentroll_raw",        "rows": 2814000, "bytes": 942184320,   "partitions": ["ingest_date"],                 "source_system": "yardi",      "last_updated_at": "2026-05-20", "schema_columns": 64 },
+    { "database": "bronze", "table": "yardi_voyager_gl_raw",              "rows": 1418320, "bytes": 488213100,   "partitions": ["fiscal_period"],                "source_system": "yardi",      "last_updated_at": "2026-05-20", "schema_columns": 38 },
+    { "database": "bronze", "table": "mri_software_rentroll_raw",         "rows":  214000, "bytes":  98112000,   "partitions": ["ingest_date"],                  "source_system": "mri",        "last_updated_at": "2026-05-20", "schema_columns": 48 },
+    { "database": "bronze", "table": "vts_pipeline_raw",                  "rows":   38214, "bytes":  18412900,   "partitions": [],                                "source_system": "vts",        "last_updated_at": "2026-05-20", "schema_columns": 42 },
+    { "database": "bronze", "table": "procore_cost_raw",                  "rows":  124800, "bytes":  62141900,   "partitions": ["project_id"],                   "source_system": "procore",    "last_updated_at": "2026-05-20", "schema_columns": 31 },
+    { "database": "bronze", "table": "honeywell_bms_telemetry_raw",       "rows":418932000,"bytes":141241900000, "partitions": ["dt_hour","property_id"],         "source_system": "honeywell",  "last_updated_at": "2026-05-20", "schema_columns": 12 },
+    { "database": "bronze", "table": "costar_market_raw",                 "rows":  812400, "bytes": 198241900,   "partitions": ["snapshot_date"],                "source_system": "costar",     "last_updated_at": "2026-05-20", "schema_columns": 28 },
+    { "database": "bronze", "table": "rca_transactions_raw",              "rows":   72400, "bytes":  41241900,   "partitions": ["transaction_year"],             "source_system": "rca",        "last_updated_at": "2026-05-20", "schema_columns": 36 },
+    { "database": "bronze", "table": "sp_credit_actions_raw",             "rows":    8200, "bytes":   2241900,   "partitions": [],                                "source_system": "sp",         "last_updated_at": "2026-05-20", "schema_columns": 14 },
+
+    { "database": "silver", "table": "stg_properties",                    "rows":     843, "bytes":     412900,  "partitions": [],                                "source_system": "yardi+mri",  "last_updated_at": "2026-05-20", "schema_columns": 38 },
+    { "database": "silver", "table": "stg_leases",                        "rows":   42400, "bytes":   18241900,  "partitions": ["lease_status"],                  "source_system": "yardi+mri",  "last_updated_at": "2026-05-20", "schema_columns": 31 },
+    { "database": "silver", "table": "stg_rentroll_monthly",              "rows":  611200, "bytes":  198241000,  "partitions": ["fiscal_year"],                   "source_system": "yardi+mri",  "last_updated_at": "2026-05-20", "schema_columns": 26 },
+    { "database": "silver", "table": "stg_gl_postings",                   "rows":  481200, "bytes":  148241000,  "partitions": ["fiscal_period"],                 "source_system": "yardi",      "last_updated_at": "2026-05-20", "schema_columns": 24 },
+    { "database": "silver", "table": "stg_leasing_pipeline",              "rows":   38214, "bytes":   14241900,  "partitions": [],                                "source_system": "vts",        "last_updated_at": "2026-05-20", "schema_columns": 32 },
+    { "database": "silver", "table": "stg_capex_projects",                "rows":   14200, "bytes":    4124190,  "partitions": [],                                "source_system": "procore",    "last_updated_at": "2026-05-20", "schema_columns": 28 },
+    { "database": "silver", "table": "stg_bms_hourly",                    "rows": 28401200,"bytes":  9824190000, "partitions": ["dt_hour"],                       "source_system": "honeywell",  "last_updated_at": "2026-05-20", "schema_columns": 14 },
+    { "database": "silver", "table": "stg_market_metrics",                "rows":   28100, "bytes":    9124190,  "partitions": ["snapshot_date"],                 "source_system": "costar",     "last_updated_at": "2026-05-20", "schema_columns": 22 },
+    { "database": "silver", "table": "stg_tenant_credit",                 "rows":    1142, "bytes":     412900,  "partitions": [],                                "source_system": "sp",         "last_updated_at": "2026-05-20", "schema_columns": 18 },
+
+    { "database": "gold",   "table": "fct_property_noi_monthly",          "rows":   84300, "bytes":   28241900,  "partitions": ["fiscal_year"],                   "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 22 },
+    { "database": "gold",   "table": "fct_lease_expiry_profile",          "rows":   42400, "bytes":   12241900,  "partitions": ["expiry_year"],                   "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 18 },
+    { "database": "gold",   "table": "fct_tenant_credit_risk",            "rows":     100, "bytes":     124190,  "partitions": [],                                "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 24 },
+    { "database": "gold",   "table": "fct_leasing_pipeline_velocity",     "rows":    1240, "bytes":    1141900,  "partitions": ["metro"],                         "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 26 },
+    { "database": "gold",   "table": "fct_capex_project_status",          "rows":      23, "bytes":      62190,  "partitions": [],                                "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 28 },
+    { "database": "gold",   "table": "fct_building_performance_daily",    "rows":  308000, "bytes":   98241900,  "partitions": ["fiscal_year"],                   "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 28 },
+    { "database": "gold",   "table": "fct_market_cap_rates",              "rows":    8400, "bytes":    1841900,  "partitions": ["snapshot_year"],                 "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 14 },
+    { "database": "gold",   "table": "fct_below_market_assets_flagged",   "rows":      42, "bytes":      18219,  "partitions": [],                                "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 16 },
+    { "database": "gold",   "table": "fct_esg_emissions_by_asset",        "rows":     843, "bytes":     241900,  "partitions": [],                                "source_system": "dbt",        "last_updated_at": "2026-05-20", "schema_columns": 18 }
+  ]
+}

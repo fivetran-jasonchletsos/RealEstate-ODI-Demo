@@ -1,0 +1,56 @@
+{
+  "portfolio_value_usd": 42100000000,
+  "property_count": 843,
+  "asset_classes": {
+    "office": 480,
+    "industrial": 280,
+    "multifamily": 65,
+    "mixed_use": 18
+  },
+  "states_covered": 38,
+  "gla_sqft": 138400000,
+  "occupancy_pct": 92.4,
+  "occupancy_pct_prior_qtr": 93.1,
+  "noi_ytd_usd": 1810000000,
+  "noi_run_rate_usd": 2680000000,
+  "same_store_noi_growth_pct": 2.8,
+  "same_store_noi_growth_prior_qtr_pct": 3.4,
+  "affo_per_share_usd": 2.94,
+  "affo_payout_ratio_pct": 78.2,
+  "dividend_coverage_ratio": 1.28,
+  "debt_to_ebitda": 5.6,
+  "weighted_avg_lease_term_yrs": 6.4,
+  "weighted_avg_cost_of_debt_pct": 4.35,
+  "fixed_charge_coverage": 3.2,
+  "iceberg_table_count": 28,
+  "lake_bytes": 4623184201728,
+  "last_sync_at": "2026-05-20",
+  "generated_at": "2026-05-21T06:15:00+00:00",
+  "source": "demo",
+  "top_signals": [
+    {
+      "id": "signal-credit-downgrade",
+      "title": "3 tenant credits downgraded this week",
+      "detail": "S&P moved Aldridge Logistics, Cascadia Health Systems, and Meriwether Apparel from BBB- to BB+. Combined exposure: 4.1% of total rent roll. Watchlist refreshed.",
+      "severity": "alert",
+      "owner": "Asset Management",
+      "link": "/tenant-credit"
+    },
+    {
+      "id": "signal-leasing-sf",
+      "title": "SF Bay leasing pipeline 22% below plan",
+      "detail": "Tour-to-LOI conversion in San Francisco has slid from 18% to 11% over six weeks. Pipeline coverage on 2H expiries now 1.4x vs target of 2.0x.",
+      "severity": "caution",
+      "owner": "Leasing",
+      "link": "/leasing"
+    },
+    {
+      "id": "signal-capex-overrun",
+      "title": "1 Federal Square MEP retrofit running 14% over budget",
+      "detail": "Procore cost feed shows mechanical scope expansion plus chilled-water tie-in cost overruns. Forecast complete-cost up $4.2M, projected stabilized yield-on-cost drops to 6.8%.",
+      "severity": "caution",
+      "owner": "Development",
+      "link": "/"
+    }
+  ]
+}

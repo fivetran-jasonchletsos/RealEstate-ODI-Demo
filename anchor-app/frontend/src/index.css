@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Anchor Properties — institutional real-estate design system.
+ *
+ * References pitchbook decks at Eastdil Secured, JLL Capital Markets,
+ * and CBRE Investment Management. Deep midnight + paper cream + muted
+ * gold accent, DM Serif Display for institutional authority, Inter for
+ * body, JetBrains Mono for figures.
+ *
+ * Brand color (Fivetran / Snowflake) is intentionally absent from the
+ * chrome. ODI lives in the architecture, not the wrapper.
+ */
+
+:root {
+  --midnight:       #1a1f2e;
+  --midnight-deep:  #11141e;
+  --midnight-soft:  #262c3d;
+  --gold:           #c8a951;
+  --gold-bright:    #d9bf6a;
+  --gold-dim:       #a08736;
+  --gold-bg:        #f5ecd3;
+  --paper:          #f5f1e8;
+  --paper-deep:     #ece6d5;
+  --card:           #ffffff;
+  --hairline:       #d8d1bf;
+  --hairline-soft:  #e8e2d2;
+  --ink-strong:     #0f1219;
+  --ink:            #2a2f3a;
+  --ink-muted:      #555c6a;
+  --ink-soft:       #7a8190;
+
+  --alert:          #8b1d2c;
+  --alert-bg:       #fbe7ea;
+  --caution:        #a86b00;
+  --caution-bg:     #fdf3e0;
+  --good:           #16613f;
+  --good-bg:        #e5f1ea;
+  --teal:           #1a5b69;
+  --teal-bg:        #e3eef1;
+
+  --bronze:         #b07426;
+  --bronze-bg:      #fbeed8;
+  --silver:         #6b7280;
+  --silver-bg:      #f3f3f0;
+  --gold-layer:     #c8a951;
+  --gold-layer-bg:  #f5ecd3;
+}
+
+html, body, #root {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+}
+
+.font-serif {
+  font-family: 'DM Serif Display', Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.005em;
+  font-weight: 400;
+}
+
+.gold-rail {
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-dim) 0%, var(--gold-bright) 50%, var(--gold-dim) 100%);
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold-dim);
+}
+.eyebrow-light {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--gold-bright);
+}
+
+.research-card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px rgba(26, 31, 46, 0.05);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+}
+.status-pill::before {
+  content: '';
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: currentColor;
+}
+.status-pill.good     { background: var(--good-bg);    color: var(--good);    border-color: #c7e3d4; }
+.status-pill.alert    { background: var(--alert-bg);   color: var(--alert);   border-color: #f4c2c8; }
+.status-pill.caution  { background: var(--caution-bg); color: var(--caution); border-color: #f1dca5; }
+.status-pill.neutral  { background: var(--paper-deep); color: var(--ink-muted); border-color: var(--hairline); }
+.status-pill.gold     { background: var(--gold-bg);    color: var(--gold-dim); border-color: #ead9a3; }
+
+.layer-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.1875rem 0.5625rem;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-family: 'JetBrains Mono', monospace;
+}
+.layer-chip.bronze { background: var(--bronze-bg); color: var(--bronze); border: 1px solid #ecd0a2; }
+.layer-chip.silver { background: var(--silver-bg); color: var(--silver); border: 1px solid #d8dadf; }
+.layer-chip.gold   { background: var(--gold-layer-bg); color: var(--gold-layer); border: 1px solid #ead9a3; }
+
+.quote-tile {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 0.25rem;
+  padding: 1rem 1.125rem;
+}
+.quote-tile-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+.quote-tile-value {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.875rem;
+  color: var(--ink-strong);
+  line-height: 1.1;
+  margin-top: 0.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--paper-deep); }
+::-webkit-scrollbar-thumb { background: #c4bda8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a89f87; }
+
+*:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 3px;
+}

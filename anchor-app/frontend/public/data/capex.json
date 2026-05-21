@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-05-21T06:15:00+00:00",
+  "as_of": "2026-05-20",
+  "summary": {
+    "capex_ytd_usd": 184600000,
+    "capex_budget_full_year_usd": 412000000,
+    "capex_pace_pct": 44.8,
+    "under_construction_count": 14,
+    "planned_count": 9,
+    "weighted_avg_yield_on_cost_pct": 7.1,
+    "total_committed_capital_usd": 1240000000,
+    "remaining_to_fund_usd": 562000000
+  },
+  "projects": [
+    { "project_id": "P-001", "name": "1 Federal Square — MEP Retrofit", "property_id": "AP-1001", "metro": "BOS", "type": "Repositioning", "status": "under_construction", "budget_usd": 32400000, "spent_usd": 21800000, "complete_pct": 67, "projected_yoc_pct": 6.8, "delta_vs_budget_pct": 14.0, "risk": "amber", "risk_note": "Mechanical scope expansion plus chilled-water tie-in cost overruns from Procore feed. Forecast at-complete $4.2M over budget." },
+    { "project_id": "P-002", "name": "Harbor Point Plaza — Lobby & Amenity", "property_id": "AP-1004", "metro": "NYC", "type": "Repositioning", "status": "under_construction", "budget_usd": 14600000, "spent_usd": 6400000, "complete_pct": 44, "projected_yoc_pct": 8.2, "delta_vs_budget_pct": -1.8, "risk": "green", "risk_note": "On track. Tenant tour calendar shows 31% lift in scheduled visits since reposition announcement." },
+    { "project_id": "P-003", "name": "Eastgate Distribution Center — Phase II", "property_id": "AP-1015", "metro": "DAL", "type": "Ground-up Development", "status": "under_construction", "budget_usd": 78000000, "spent_usd": 41200000, "complete_pct": 53, "projected_yoc_pct": 8.6, "delta_vs_budget_pct": 0.3, "risk": "green", "risk_note": "650k sqft cross-dock. Lease commitments cover 72% of GLA pre-completion." },
+    { "project_id": "P-004", "name": "The Avenue at Westgate — Mixed-Use Block", "property_id": "AP-1042", "metro": "AUS", "type": "Ground-up Development", "status": "under_construction", "budget_usd": 168000000, "spent_usd": 71200000, "complete_pct": 42, "projected_yoc_pct": 6.4, "delta_vs_budget_pct": 3.6, "risk": "amber", "risk_note": "Concrete tariff pass-through and labor escalation. Retail pre-leasing at 38% vs target 55% for current phase." },
+    { "project_id": "P-005", "name": "The Aldridge — Building Systems Modernization", "property_id": "AP-1031", "metro": "SEA", "type": "ESG / Decarbonization", "status": "under_construction", "budget_usd": 11800000, "spent_usd": 4900000, "complete_pct": 41, "projected_yoc_pct": 7.4, "delta_vs_budget_pct": -2.1, "risk": "green", "risk_note": "Electrification of central plant plus heat-pump conversion. Projected 38% reduction in scope-1 emissions, eligible for IRA 179D deduction." },
+    { "project_id": "P-006", "name": "Park Avenue 1455 — Sub-Cellar Vault Conversion", "property_id": "AP-1006", "metro": "NYC", "type": "Repositioning", "status": "planned", "budget_usd": 8200000, "spent_usd": 0, "complete_pct": 0, "projected_yoc_pct": 9.1, "delta_vs_budget_pct": 0, "risk": "green", "risk_note": "RFP in market for design-build, mobilization 3Q26." },
+    { "project_id": "P-007", "name": "Pier 9 Tower — Curtainwall Replacement", "property_id": "AP-1009", "metro": "SF", "type": "Capital Maintenance", "status": "under_construction", "budget_usd": 47000000, "spent_usd": 12100000, "complete_pct": 26, "projected_yoc_pct": null, "delta_vs_budget_pct": 1.2, "risk": "green", "risk_note": "Curtainwall failure remediation. Insurance recovery offsetting 31% of project cost." },
+    { "project_id": "P-008", "name": "100 South Wacker — Conference & Wellness Floor", "property_id": "AP-1018", "metro": "CHI", "type": "Repositioning", "status": "planned", "budget_usd": 22500000, "spent_usd": 0, "complete_pct": 0, "projected_yoc_pct": 7.8, "delta_vs_budget_pct": 0, "risk": "green", "risk_note": "Awaiting board approval. Modeled 110 bps occupancy lift over 18 months." },
+    { "project_id": "P-009", "name": "Riverbend One — Solar PV + BESS", "property_id": "AP-1022", "metro": "PHX", "type": "ESG / Decarbonization", "status": "under_construction", "budget_usd": 6400000, "spent_usd": 2900000, "complete_pct": 45, "projected_yoc_pct": 11.4, "delta_vs_budget_pct": -3.5, "risk": "green", "risk_note": "1.2 MW rooftop PV plus 2.4 MWh battery. Demand-charge savings tracking ahead of underwriting." },
+    { "project_id": "P-010", "name": "Granite Place — Office-to-Residential Conversion Study", "property_id": "AP-1013", "metro": "DC", "type": "Repositioning", "status": "planned", "budget_usd": 4200000, "spent_usd": 0, "complete_pct": 0, "projected_yoc_pct": null, "delta_vs_budget_pct": 0, "risk": "amber", "risk_note": "Pre-development. Feasibility on partial conversion of floors 4-12. Zoning analysis underway." }
+  ],
+  "top_5_summary_notes": [
+    "Office reposition projects skew amber on construction-cost escalation; industrial ground-up build delivering on plan.",
+    "ESG capex projects show highest projected yield-on-cost (avg 9.4%) driven by IRA incentives plus tenant willingness-to-pay green premium.",
+    "Procore cost feed is the leading indicator — average 6-week lead time on budget variance signal vs traditional monthly accounting close."
+  ]
+}
