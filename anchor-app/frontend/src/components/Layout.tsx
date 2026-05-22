@@ -6,6 +6,7 @@ const NAV: [string, string][] = [
   ['/leasing', 'Leasing'],
   ['/tenant-credit', 'Tenant Credit'],
   ['/esg', 'Building Performance'],
+  ['/comparables', 'Comparables'],
   ['/architecture', 'ODI Architecture'],
   ['/pipeline', 'Pipeline'],
   ['/policy', 'Why ODI'],

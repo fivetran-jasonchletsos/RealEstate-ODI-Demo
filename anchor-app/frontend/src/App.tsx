@@ -8,6 +8,8 @@ import LeasingPage from './pages/LeasingPage';
 import TenantCreditPage from './pages/TenantCreditPage';
 import ESGPage from './pages/ESGPage';
 import PolicyPage from './pages/PolicyPage';
+import ComparablesPage from './pages/ComparablesPage';
+import PropertyDetailPage from './pages/PropertyDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
@@ -23,6 +25,8 @@ export default function App() {
           <Route path="/tenant-credit" element={<TenantCreditPage />} />
           <Route path="/esg" element={<ESGPage />} />
           <Route path="/policy" element={<PolicyPage />} />
+          <Route path="/comparables" element={<ComparablesPage />} />
+          <Route path="/property/:id" element={<PropertyDetailPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
