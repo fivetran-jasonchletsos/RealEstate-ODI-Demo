@@ -21,7 +21,7 @@ const DEMOS = [
   { key: 'techsaas',    name: 'SaaS Pulse',         industry: 'Tech, SaaS analytics',                   url: 'https://fivetran-jasonchletsos.github.io/TechSaaS-ODI-Demo/',     accent: '#059669' },
   { key: 'supplychain', name: 'Manifest',           industry: 'Supply chain, logistics',                url: 'https://fivetran-jasonchletsos.github.io/SupplyChain-ODI-Demo/',  accent: '#0891b2' },
   { key: 'lifesci',     name: 'Cohort',             industry: 'Life sciences, clinical research',       url: 'https://fivetran-jasonchletsos.github.io/LifeSci-ODI-Demo/',      accent: '#be185d' },
-  { key: 'healthcare',  name: 'Epic Clarity',       industry: 'Healthcare, clinical analytics',         url: 'https://fivetran-jasonchletsos.github.io/Healthcare-EPIC-Snowflake-Demo/', accent: '#0d9488' },
+  { key: 'healthcare',  name: 'Clarity Health',     industry: 'Healthcare, clinical analytics',         url: 'https://fivetran-jasonchletsos.github.io/Healthcare-EPIC-Snowflake-Demo/', accent: '#0d9488' },
 ];
 const CURRENT = 'realestate';
 

@@ -160,7 +160,7 @@ export default function TenantCreditPage() {
             >Watchlist ({s.watchlist_count})</button>
           </div>
         </div>
-        <div className="research-card overflow-hidden">
+        <div className="research-card no-lift overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-[var(--paper-deep)] text-[10px] uppercase tracking-wider text-[var(--ink-soft)] font-semibold">
               <tr>

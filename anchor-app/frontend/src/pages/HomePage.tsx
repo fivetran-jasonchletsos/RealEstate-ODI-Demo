@@ -53,16 +53,27 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className="bg-[var(--midnight)] text-white relative overflow-hidden">
+        {/* Atmospheric radial glow */}
         <div
-          className="absolute inset-0 opacity-[0.07] pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           aria-hidden
-          style={{ backgroundImage: 'repeating-linear-gradient(135deg, transparent 0 28px, rgba(216,191,106,0.5) 28px 29px)' }}
+          style={{
+            background:
+              'radial-gradient(ellipse 70% 60% at 75% 50%, rgba(200,169,81,0.08) 0%, transparent 55%), ' +
+              'radial-gradient(ellipse 40% 40% at 10% 80%, rgba(200,169,81,0.04) 0%, transparent 50%)',
+          }}
+        />
+        {/* Architectural grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.055] pointer-events-none"
+          aria-hidden
+          style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent 0 39px, rgba(216,191,106,0.6) 39px 40px), repeating-linear-gradient(90deg, transparent 0 39px, rgba(216,191,106,0.6) 39px 40px)' }}
         />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24 relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 animate-fade-up">
               <div className="eyebrow-light mb-4">Anchor Properties, Open Data Infrastructure</div>
-              <h1 className="font-serif text-4xl sm:text-6xl text-white leading-[0.98] tracking-tight">
+              <h1 className="font-serif text-[2.6rem] sm:text-[3.75rem] md:text-[4.5rem] text-white leading-[0.95] tracking-tight">
                 One lake.<br />
                 <span className="text-[var(--gold-bright)]">Every asset.</span><br />
                 One investment lens.
@@ -89,7 +100,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 animate-fade-up-2">
               <div className="bg-white text-[var(--ink)] rounded-sm border border-[var(--hairline)] shadow-xl overflow-hidden">
                 <div className="px-5 py-3 border-b border-[var(--hairline)] flex items-center justify-between bg-[var(--paper-deep)]">
                   <div className="eyebrow">Portfolio Snapshot</div>
@@ -135,14 +146,14 @@ export default function HomePage() {
           </div>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-          <KPI label="NOI YTD"               value={stats ? formatCurrencyShort(stats.noi_ytd_usd) : '—'}    sub={stats ? `Run-rate ${formatCurrencyShort(stats.noi_run_rate_usd)}` : ''} />
-          <KPI label="Same-store NOI growth" value={stats ? formatDeltaPct(stats.same_store_noi_growth_pct) : '—'} sub="trailing twelve months" tone={stats && stats.same_store_noi_growth_pct > 0 ? 'good' : 'alert'} />
-          <KPI label="AFFO per share"        value={stats ? `$${stats.affo_per_share_usd.toFixed(2)}` : '—'} sub={stats ? `Payout ratio ${stats.affo_payout_ratio_pct.toFixed(0)}%` : ''} />
-          <KPI label="Dividend coverage"     value={stats ? `${stats.dividend_coverage_ratio.toFixed(2)}x` : '—'} sub="AFFO ÷ dividends" tone={stats && stats.dividend_coverage_ratio > 1.15 ? 'good' : 'caution'} />
-          <KPI label="Debt / EBITDA"         value={stats ? `${stats.debt_to_ebitda.toFixed(1)}x` : '—'} sub="net leverage" tone={stats && stats.debt_to_ebitda < 6 ? 'good' : 'caution'} />
-          <KPI label="WALT"                  value={stats ? `${stats.weighted_avg_lease_term_yrs.toFixed(1)} yrs` : '—'} sub="weighted avg lease term" />
-          <KPI label="Cost of debt"          value={stats ? formatPercent(stats.weighted_avg_cost_of_debt_pct) : '—'} sub="weighted avg" />
-          <KPI label="Watchlist properties"  value={portfolio ? String(portfolio.top_properties.filter((p) => p.watchlist_flag).length) : '—'} sub="occupancy or expiry risk" tone="caution" onClick={() => navigate('/leasing')} />
+          <KPI className="animate-fade-up-1" label="NOI YTD"               value={stats ? formatCurrencyShort(stats.noi_ytd_usd) : '—'}    sub={stats ? `Run-rate ${formatCurrencyShort(stats.noi_run_rate_usd)}` : ''} />
+          <KPI className="animate-fade-up-2" label="Same-store NOI growth" value={stats ? formatDeltaPct(stats.same_store_noi_growth_pct) : '—'} sub="trailing twelve months" tone={stats && stats.same_store_noi_growth_pct > 0 ? 'good' : 'alert'} />
+          <KPI className="animate-fade-up-3" label="AFFO per share"        value={stats ? `$${stats.affo_per_share_usd.toFixed(2)}` : '—'} sub={stats ? `Payout ratio ${stats.affo_payout_ratio_pct.toFixed(0)}%` : ''} />
+          <KPI className="animate-fade-up-4" label="Dividend coverage"     value={stats ? `${stats.dividend_coverage_ratio.toFixed(2)}x` : '—'} sub="AFFO ÷ dividends" tone={stats && stats.dividend_coverage_ratio > 1.15 ? 'good' : 'caution'} />
+          <KPI className="animate-fade-up-5" label="Debt / EBITDA"         value={stats ? `${stats.debt_to_ebitda.toFixed(1)}x` : '—'} sub="net leverage" tone={stats && stats.debt_to_ebitda < 6 ? 'good' : 'caution'} />
+          <KPI className="animate-fade-up-6" label="WALT"                  value={stats ? `${stats.weighted_avg_lease_term_yrs.toFixed(1)} yrs` : '—'} sub="weighted avg lease term" />
+          <KPI className="animate-fade-up-7" label="Cost of debt"          value={stats ? formatPercent(stats.weighted_avg_cost_of_debt_pct) : '—'} sub="weighted avg" />
+          <KPI className="animate-fade-up-8" label="Watchlist properties"  value={portfolio ? String(portfolio.top_properties.filter((p) => p.watchlist_flag).length) : '—'} sub="occupancy or expiry risk" tone="caution" onClick={() => navigate('/leasing')} />
         </div>
       </section>
 
@@ -157,11 +168,11 @@ export default function HomePage() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {(stats?.top_signals ?? []).map((s) => (
+          {(stats?.top_signals ?? []).map((s, i) => (
             <button
               key={s.id}
               onClick={() => s.link && navigate(s.link)}
-              className="text-left research-card p-5 hover:border-[var(--gold)] transition-colors"
+              className={`text-left research-card p-5 hover:border-[var(--gold)] animate-fade-up-${i + 1}`}
             >
               <div className="flex items-start justify-between gap-2 mb-3">
                 <span className={`status-pill ${s.severity === 'alert' ? 'alert' : s.severity === 'caution' ? 'caution' : 'neutral'}`}>
@@ -238,21 +249,21 @@ function Stat({ label, value, hint, delta }: { label: string; value: string; hin
   const deltaColor = delta == null ? 'var(--ink-soft)' : delta >= 0 ? 'var(--good)' : 'var(--alert)';
   return (
     <div className="px-5 py-4">
-      <div className="text-[10.5px] font-semibold text-[var(--ink-soft)] uppercase tracking-[0.08em]">{label}</div>
-      <div className="mt-1 flex items-baseline gap-2">
+      <div className="text-[10px] font-semibold text-[var(--ink-soft)] uppercase tracking-[0.12em]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{label}</div>
+      <div className="mt-1.5 flex items-baseline gap-2">
         <div className="font-serif text-2xl text-[var(--ink-strong)] leading-none tabular">{value}</div>
         {delta != null && (
-          <span className="text-[11px] font-semibold tabular" style={{ color: deltaColor }}>
+          <span className="text-[11px] font-semibold tabular" style={{ color: deltaColor, fontFamily: "'JetBrains Mono', monospace" }}>
             {delta >= 0 ? '+' : ''}{delta.toFixed(1)}
           </span>
         )}
       </div>
-      <div className="mt-1 text-[11px] text-[var(--ink-soft)]">{hint}</div>
+      <div className="mt-1 text-[11px] text-[var(--ink-soft)]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{hint}</div>
     </div>
   );
 }
 
-function KPI({ label, value, sub, tone, onClick }: { label: string; value: string; sub?: string; tone?: 'good' | 'alert' | 'caution'; onClick?: () => void }) {
+function KPI({ label, value, sub, tone, onClick, className = '' }: { label: string; value: string; sub?: string; tone?: 'good' | 'alert' | 'caution'; onClick?: () => void; className?: string }) {
   const color =
     tone === 'good' ? 'var(--good)' :
     tone === 'alert' ? 'var(--alert)' :
@@ -260,10 +271,10 @@ function KPI({ label, value, sub, tone, onClick }: { label: string; value: strin
     'var(--ink-strong)';
   const Tag = onClick ? 'button' : 'div';
   return (
-    <Tag onClick={onClick} className={`research-card px-5 py-4 text-left ${onClick ? 'hover:border-[var(--gold)] transition-colors cursor-pointer' : ''}`}>
-      <div className="text-[10.5px] font-semibold text-[var(--ink-soft)] uppercase tracking-[0.08em]">{label}</div>
-      <div className="mt-1 font-serif text-3xl leading-none tabular" style={{ color }}>{value}</div>
-      {sub && <div className="mt-1.5 text-[11px] text-[var(--ink-soft)]">{sub}</div>}
+    <Tag onClick={onClick} className={`research-card px-5 py-4 text-left ${onClick ? 'hover:border-[var(--gold)] cursor-pointer' : ''} ${className}`}>
+      <div className="text-[10px] font-semibold text-[var(--ink-soft)] uppercase tracking-[0.12em]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{label}</div>
+      <div className="mt-1.5 font-serif text-3xl leading-none tabular" style={{ color }}>{value}</div>
+      {sub && <div className="mt-1.5 text-[11px] text-[var(--ink-soft)]" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{sub}</div>}
     </Tag>
   );
 }

@@ -123,7 +123,7 @@ export default function ESGPage() {
       {/* Worst-performers list */}
       <section className="mb-12">
         <h2 className="font-serif text-2xl text-[var(--ink-strong)] border-b border-[var(--hairline)] pb-2 mb-5">Highest GHG intensity, 10 assets</h2>
-        <div className="research-card overflow-hidden">
+        <div className="research-card no-lift overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-[var(--paper-deep)] text-[10px] uppercase tracking-wider text-[var(--ink-soft)] font-semibold">
               <tr>

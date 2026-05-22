@@ -67,7 +67,7 @@ export default function LeasingPage() {
       {/* Pipeline by metro */}
       <section className="mb-12">
         <h2 className="font-serif text-2xl text-[var(--ink-strong)] border-b border-[var(--hairline)] pb-2 mb-5">Pipeline by metro</h2>
-        <div className="research-card overflow-hidden">
+        <div className="research-card no-lift overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-[var(--paper-deep)] text-[10px] uppercase tracking-wider text-[var(--ink-soft)] font-semibold">
               <tr>
@@ -103,7 +103,7 @@ export default function LeasingPage() {
       <section className="mb-12">
         <div className="flex items-end justify-between mb-5 border-b border-[var(--hairline)] pb-2">
           <h2 className="font-serif text-2xl text-[var(--ink-strong)]">Velocity-agent recommendations</h2>
-          <span className="layer-chip gold">gold.fct_below_market_assets_flagged</span>
+          <span className="text-[11px] text-[var(--ink-soft)] font-mono">fct_below_market_assets_flagged</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {data.velocity_agent_recommendations.map((r) => (
@@ -145,7 +145,7 @@ export default function LeasingPage() {
       {/* Top expiring leases */}
       <section className="mb-12">
         <h2 className="font-serif text-2xl text-[var(--ink-strong)] border-b border-[var(--hairline)] pb-2 mb-5">Top 20 expiring leases</h2>
-        <div className="research-card overflow-hidden">
+        <div className="research-card no-lift overflow-hidden">
           <table className="w-full text-sm">
             <thead className="bg-[var(--paper-deep)] text-[10px] uppercase tracking-wider text-[var(--ink-soft)] font-semibold">
               <tr>
