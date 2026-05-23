@@ -92,11 +92,38 @@ export default function HomePage() {
                   Open the desk
                 </button>
                 <button
-                  onClick={() => navigate('/architecture')}
+                  onClick={() => navigate('/scenario')}
                   className="inline-flex items-center gap-2 rounded-sm font-semibold text-sm text-white bg-white/5 border border-white/20 px-5 py-3 hover:bg-white/10 transition-colors"
                 >
-                  See the ODI architecture
+                  dbt-wizard demo
+                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                  </svg>
                 </button>
+                <button
+                  onClick={() => navigate('/architecture')}
+                  className="inline-flex items-center gap-2 rounded-sm font-semibold text-sm text-white/70 hover:text-white transition-colors"
+                >
+                  ODI architecture
+                </button>
+              </div>
+
+              {/* dbt-wizard scenario callout */}
+              <div
+                className="mt-6 rounded-sm border border-white/15 px-4 py-3 max-w-xl"
+                style={{ background: 'rgba(200,169,81,0.06)' }}
+              >
+                <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--gold-bright)] mb-1">CIO question · dbt-wizard</div>
+                <p className="text-sm text-white/80 leading-snug">
+                  "Why did our Class-A office NOI underperform pro-forma by 22% in the Sunbelt?"
+                  No gold model exists. Investment Committee meets in 20 hours.{' '}
+                  <button
+                    onClick={() => navigate('/scenario')}
+                    className="text-[var(--gold-bright)] font-semibold underline underline-offset-2 hover:no-underline"
+                  >
+                    See the live build.
+                  </button>
+                </p>
               </div>
             </div>
 

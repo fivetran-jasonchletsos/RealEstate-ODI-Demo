@@ -1,0 +1,60 @@
+{
+  "agents": [
+    {
+      "id": "explorer",
+      "name": "Explorer Agent",
+      "code": "EXP",
+      "color": "#c8a951",
+      "role": "Surfaces the relevant gold models for the CRE NOI attribution question. Starts from the investment problem, not the file tree.",
+      "tools": ["status", "search"],
+      "sample_input": "Find models related to NOI, pro-forma variance, WALT, rent roll, Class-A office, Sunbelt, and metro segmentation.",
+      "responsibilities": [
+        "Runs status to confirm the dbt project is parsed and healthy",
+        "Runs search with CRE vocabulary against model names, columns, and descriptions",
+        "Hands candidate model list to Summary"
+      ]
+    },
+    {
+      "id": "summary",
+      "name": "Summary Agent",
+      "code": "SUM",
+      "color": "#7c3aed",
+      "role": "Documents the grain of each upstream, the join keys, and where the attribution gap sits. Decides before any SQL whether the data can answer the CIO's question.",
+      "tools": ["describe", "lineage"],
+      "sample_input": "For those models, show grain, key columns, and how they join. Where is the gap between what we have and what the Investment Committee needs?",
+      "responsibilities": [
+        "Runs describe on each candidate model to confirm grain",
+        "Runs lineage to validate the join path",
+        "Names the new grain the gold table has to land on"
+      ]
+    },
+    {
+      "id": "worker",
+      "name": "Worker Agent",
+      "code": "WRK",
+      "color": "#be185d",
+      "role": "Authors the new gold.fct_noi_attribution_by_asset_class_metro_quarter with proper CTEs, joins, and WALT compression attribution.",
+      "tools": ["warehouse", "dbt_show", "file edits", "model generation"],
+      "sample_input": "Create gold.fct_noi_attribution_by_asset_class_metro_quarter as a table materialization. Validate grain with dbt_show before committing the file.",
+      "responsibilities": [
+        "Runs warehouse and dbt_show on a targeted slice to validate proposed grain",
+        "Writes the SQL file with CTEs, joins, and final aggregation",
+        "Materializes the model to the gold schema on Iceberg"
+      ]
+    },
+    {
+      "id": "verification",
+      "name": "Verification Agent",
+      "code": "VER",
+      "color": "#145e36",
+      "role": "Adds dbt tests, schema contract, and ownership. Validates against existing lineage and confirms downstream consumers can read the new asset.",
+      "tools": ["describe", "lineage", "dbt_show"],
+      "sample_input": "Add tests covering uniqueness on (asset_class, metro_code, fiscal_quarter) and not-null on noi_variance_usd. Confirm lineage picks the new gold table up immediately.",
+      "responsibilities": [
+        "Writes YAML companion with description, tests, and schema contract",
+        "Confirms uniqueness and not-null tests pass against materialized slice",
+        "Updates lineage so downstream consumers pick the asset up immediately"
+      ]
+    }
+  ]
+}

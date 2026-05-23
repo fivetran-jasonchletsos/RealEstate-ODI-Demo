@@ -1,0 +1,104 @@
+{
+  "materialized_model": "gold.fct_noi_attribution_by_asset_class_metro_quarter",
+  "row_count": 312,
+  "tests_passed": 9,
+  "tests_written": "7 column-level + 1 combination uniqueness + 1 not-null on noi_variance_usd",
+  "build_seconds": 90,
+  "before": {
+    "nodes": [
+      { "id": "fct_noi_monthly",   "name": "gold.fct_property_noi_monthly", "layer": "gold" },
+      { "id": "fct_rent_roll",     "name": "gold.fct_lease_rent_roll",      "layer": "gold" },
+      { "id": "fct_tenant_act",    "name": "gold.fct_tenant_activity",      "layer": "gold" },
+      { "id": "dim_property",      "name": "gold.dim_property",             "layer": "gold" },
+      { "id": "gap",               "name": "gold.fct_noi_attribution_by_asset_class_metro_quarter", "layer": "gap", "built": false }
+    ],
+    "edges": [
+      { "from": "fct_noi_monthly",  "to": "gap" },
+      { "from": "fct_rent_roll",    "to": "gap" },
+      { "from": "fct_tenant_act",   "to": "gap" },
+      { "from": "dim_property",     "to": "gap" }
+    ]
+  },
+  "after": {
+    "nodes": [
+      { "id": "fct_noi_monthly",   "name": "gold.fct_property_noi_monthly", "layer": "gold" },
+      { "id": "fct_rent_roll",     "name": "gold.fct_lease_rent_roll",      "layer": "gold" },
+      { "id": "fct_tenant_act",    "name": "gold.fct_tenant_activity",      "layer": "gold" },
+      { "id": "dim_property",      "name": "gold.dim_property",             "layer": "gold" },
+      { "id": "new_gold",          "name": "gold.fct_noi_attribution_by_asset_class_metro_quarter", "layer": "gold", "built": true, "new": true },
+      { "id": "ic_deck",           "name": "IC Deck Builder",               "layer": "consumer" },
+      { "id": "am_dashboard",      "name": "Asset Mgmt Dashboard",          "layer": "consumer" }
+    ],
+    "edges": [
+      { "from": "fct_noi_monthly",  "to": "new_gold" },
+      { "from": "fct_rent_roll",    "to": "new_gold" },
+      { "from": "fct_tenant_act",   "to": "new_gold" },
+      { "from": "dim_property",     "to": "new_gold" },
+      { "from": "new_gold",         "to": "ic_deck" },
+      { "from": "new_gold",         "to": "am_dashboard" }
+    ]
+  },
+  "root_cause": {
+    "headline": "Sunbelt Class-A office showed a 6.4-month WALT compression on the top 12 tenants; rent rolls show tenant churn in 4 markets clustered around remote-work policy reversals",
+    "detail": "The 22% NOI miss is attributable to WALT compression, not asset quality. The top 12 tenants by square footage in Austin, Dallas, Phoenix, and Nashville each shortened lease terms by 6.4 months on average when renewing in Q4 2025, coinciding with published remote-work policy reversals at three Fortune 500 occupiers. Re-lease velocity is tracking at market — base rents on re-leased space are within 2% of market. The recommendation is to re-lease at market, not write down.",
+    "affected_cohort": "Class-A Office, Sunbelt (ATX, DAL, PHX, NSH) — top 12 tenants by GLA",
+    "fallout_count": 12,
+    "total_reviewed": 47
+  },
+  "without_wizard": {
+    "label": "Without dbt-wizard",
+    "summary": "CIO's question enters the analytics backlog. Investment Committee meets without the attribution.",
+    "metrics": [
+      { "label": "Time to model",           "value": "3 to 5 days" },
+      { "label": "Engineer hours",           "value": "10 to 16h" },
+      { "label": "Tests written",            "value": "ad-hoc" },
+      { "label": "Lineage entries",          "value": "manual" },
+      { "label": "Documentation",            "value": "PR-time only" },
+      { "label": "Committee status",         "value": "no attribution" }
+    ],
+    "narrative": [
+      "CIO files the request. It enters the analytics backlog at priority A.",
+      "Data engineer scopes the work Monday morning — three days after the committee.",
+      "Engineer writes SQL from scratch, joining four gold marts by hand.",
+      "Tests, YAML, and contract get bolted on at PR time.",
+      "Investment Committee presents Sunbelt miss without root-cause attribution.",
+      "Board deck carries a note: attribution analysis pending data engineering."
+    ]
+  },
+  "with_wizard": {
+    "label": "With dbt-wizard",
+    "summary": "Four sub-agents surface the upstreams, author the SQL, write the tests, and materialize the asset in 90 seconds.",
+    "metrics": [
+      { "label": "Time to model",           "value": "90 seconds" },
+      { "label": "Engineer hours",           "value": "0.0h authored" },
+      { "label": "Tests written",            "value": "7 column + 1 combination + 1 not-null" },
+      { "label": "Lineage entries",          "value": "auto, 4 upstream" },
+      { "label": "Documentation",            "value": "in YAML on materialize" },
+      { "label": "Committee status",         "value": "root cause in hand" }
+    ],
+    "narrative": [
+      "Explorer runs status and search. Returns the four gold upstream candidates.",
+      "Summary runs describe and lineage. Confirms join path and names the new grain.",
+      "Worker runs dbt_show on a 2-quarter slice. Validates the proposed grain.",
+      "Worker authors fct_noi_attribution_by_asset_class_metro_quarter.sql.",
+      "Verification writes the YAML — description, schema contract, 9 tests, ownership.",
+      "Worker materializes the table to Iceberg. Verification confirms downstream lineage.",
+      "CIO presents WALT compression root cause to Investment Committee 20 hours ahead of schedule."
+    ]
+  },
+  "governance": [
+    { "label": "Tests written",            "value": "7 column-level + 1 combination + 1 not-null" },
+    { "label": "Schema contract",          "value": "enforced on materialize" },
+    { "label": "Lineage upstreams",        "value": "4 declared, 4 validated" },
+    { "label": "Documentation",            "value": "auto-written in YAML" },
+    { "label": "Ownership",               "value": "asset_management_analytics" },
+    { "label": "Tag",                      "value": "ai_built · investment" },
+    { "label": "Iceberg table format",     "value": "v2 · Parquet · ZSTD" },
+    { "label": "Open Catalog registration","value": "complete" }
+  ],
+  "hero": {
+    "label": "Root cause identified 20 hours before the Investment Committee meets",
+    "value": "90 seconds",
+    "note": "From CIO question to materialized Iceberg gold table — versioned, tested, documented, lineage-tracked. The asset management team now knows the WALT compression is driven by remote-work policy reversals at three tenants, not structural NOI deterioration. The recommendation is to re-lease at market."
+  }
+}

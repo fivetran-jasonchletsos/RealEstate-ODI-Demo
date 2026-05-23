@@ -9,6 +9,9 @@ const NAV: [string, string][] = [
   ['/comparables', 'Comparables'],
   ['/architecture', 'ODI Architecture'],
   ['/pipeline', 'Pipeline'],
+  ['/scenario', 'Scenario'],
+  ['/wizard-live', 'Live'],
+  ['/outcome', 'Outcome'],
   ['/policy', 'Why ODI'],
   ['/about', 'About'],
 ];
@@ -149,9 +152,23 @@ export default function Layout() {
           </div>
         </div>
         <div className="border-t border-white/10">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 text-[11px] text-white/50 flex flex-col sm:flex-row gap-1 sm:items-center sm:justify-between">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 text-[11px] text-white/50 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
             <div>© 2026 Anchor Properties ODI Demo. Fivetran Open Data Infrastructure.</div>
-            <div>Synthetic data. Fictional REIT.</div>
+            <div className="flex items-center gap-3 flex-wrap">
+              <div>Synthetic data. Fictional REIT.</div>
+              <a
+                href={`${(import.meta as any).env.BASE_URL?.replace(/\/$/, '')}/Anchor-Properties-3min-Demo-Runbook.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider border border-white/20 text-white/70 hover:border-[var(--gold)]/50 hover:text-[var(--gold-bright)] transition-colors"
+              >
+                <svg viewBox="0 0 14 14" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M7 1v9M3 7l4 4 4-4" />
+                  <rect x="1" y="11" width="12" height="2" rx="0.5" />
+                </svg>
+                3-min Runbook
+              </a>
+            </div>
           </div>
         </div>
       </footer>

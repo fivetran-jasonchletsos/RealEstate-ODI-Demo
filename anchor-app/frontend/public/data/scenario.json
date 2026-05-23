@@ -1,0 +1,46 @@
+{
+  "company": "Anchor Properties",
+  "request_id": "BLD-2026-05-23-0012",
+  "requested_by": "Margaret Holt, CIO",
+  "requested_at": "2026-05-23T06:45:00-06:00",
+  "timezone_label": "Friday 06:45 MDT",
+  "question": "Why did our Class-A office NOI underperform pro-forma by 22% in the Sunbelt this quarter, while Midwest held?",
+  "metric_label": "NOI attribution by asset class, metro, and quarter",
+  "metric_code": "gold.fct_noi_attribution_by_asset_class_metro_quarter",
+  "sop_meeting_at": "2026-05-24T06:45:00-06:00",
+  "sop_meeting_label": "Saturday 06:45 MDT · Investment Committee",
+  "target_schema": "gold",
+  "target_model": "fct_noi_attribution_by_asset_class_metro_quarter",
+  "target_grain": "one row per (asset_class, metro_code, fiscal_quarter)",
+  "prior_crisis_id": "INC-2026-05-19-0008",
+  "property_portfolio": "Anchor Properties REIT",
+  "asset_class": "Class-A Office",
+  "upstream_models": [
+    {
+      "model": "gold.fct_property_noi_monthly",
+      "layer": "gold",
+      "grain": "property_id · fiscal_month",
+      "description": "Net Operating Income by property and month from Yardi Voyager. Includes actual NOI, pro-forma NOI, and variance. Partitioned by asset class and metro."
+    },
+    {
+      "model": "gold.fct_lease_rent_roll",
+      "layer": "gold",
+      "grain": "lease_id · effective_date",
+      "description": "Rent roll snapshot from VTS. Includes WALT, base rent, market rent, expiry date, and tenant_id. Source of WALT compression signals."
+    },
+    {
+      "model": "gold.fct_tenant_activity",
+      "layer": "gold",
+      "grain": "tenant_id · activity_date",
+      "description": "Tenant move-in, move-out, renewal, and churn events from MRI Software. Includes churn_reason and re_lease_market_flag for attribution."
+    },
+    {
+      "model": "gold.dim_property",
+      "layer": "gold",
+      "grain": "property_id (SCD-2)",
+      "description": "Property master with asset class, metro code, sub-market, year-built, and pro-forma assumptions. Joins to all fact tables for Sunbelt vs. Midwest segmentation."
+    }
+  ],
+  "manual_time_days": "3 to 5 days",
+  "build_room_seconds": 90
+}

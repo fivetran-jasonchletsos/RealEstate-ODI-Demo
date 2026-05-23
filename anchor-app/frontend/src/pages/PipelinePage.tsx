@@ -1,27 +1,16 @@
 import { useEffect, useState } from 'react';
 import { fetchData, formatBytes, formatNumber } from '../lib/format';
 
-// Fivetran connector IDs map to https://fivetran.com/dashboard/connectors/<fivetran_id>
-const FIVETRAN_IDS: Record<string, string> = {
-  'yardi-voyager':        'yardi_voyager_anchor',
-  'mri-software':         'mri_software_anchor',
-  'vts':                  'vts_anchor',
-  'procore':              'procore_anchor',
-  'honeywell-bms':        'honeywell_bms_anchor',
-  'costar':               'costar_anchor',
-  'real-capital-analytics': 'rca_anchor',
-  'sp-credit':            'sp_credit_anchor',
-};
+const FIVETRAN_DASHBOARD_URL = 'https://fivetran.com/dashboard/connectors';
 
-function fivetranUrl(connectorId: string): string {
-  const fid = FIVETRAN_IDS[connectorId] ?? connectorId;
-  return `https://fivetran.com/dashboard/connectors/${fid}`;
+function fivetranUrl(fivetranId: string): string {
+  return `https://fivetran.com/dashboard/connectors/${fivetranId}/status`;
 }
 
 type Connector = {
   id: string; name: string; category: string; status: 'ok' | 'warn' | 'fail';
   rows_last_sync: number; last_sync_at: string; lag_minutes: number; freshness_sla_minutes: number;
-  warn_note?: string;
+  warn_note?: string; fivetran_id?: string;
 };
 type Layer = {
   layer: string; rows_in: number; rows_out: number; tables: number;
@@ -100,7 +89,7 @@ export default function PipelinePage() {
                 <tr key={c.id}>
                   <td className="px-4 py-3 font-semibold text-[var(--ink-strong)]">{c.name}</td>
                   <td className="px-4 py-3 text-[var(--ink-soft)] font-mono text-[11px] hidden md:table-cell">
-                    {FIVETRAN_IDS[c.id] ?? c.id}
+                    {c.fivetran_id ?? c.id}
                   </td>
                   <td className="px-4 py-3 text-[var(--ink-muted)] hidden sm:table-cell">{c.category}</td>
                   <td className="px-4 py-3 text-right tabular">{formatNumber(c.rows_last_sync)}</td>
@@ -114,7 +103,7 @@ export default function PipelinePage() {
                   </td>
                   <td className="px-4 py-3 hidden lg:table-cell">
                     <a
-                      href={fivetranUrl(c.id)}
+                      href={fivetranUrl(c.fivetran_id ?? c.id)}
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--gold-dim)] hover:text-[var(--gold)] transition-colors uppercase tracking-wider"
@@ -132,9 +121,8 @@ export default function PipelinePage() {
         </div>
         <div className="mt-3 text-[11px] text-[var(--ink-soft)] flex flex-wrap items-center gap-x-4 gap-y-1">
           <span>Managed ingest layer: <strong>Fivetran</strong></span>
-          <span className="text-[var(--hairline)]">|</span>
           <a
-            href="https://fivetran.com/dashboard/connectors"
+            href={FIVETRAN_DASHBOARD_URL}
             target="_blank"
             rel="noreferrer"
             className="font-semibold text-[var(--gold-dim)] hover:text-[var(--gold)] uppercase tracking-wider transition-colors"

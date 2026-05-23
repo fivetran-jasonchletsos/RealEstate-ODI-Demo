@@ -11,6 +11,9 @@ import PolicyPage from './pages/PolicyPage';
 import ComparablesPage from './pages/ComparablesPage';
 import PropertyDetailPage from './pages/PropertyDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ScenarioPage from './pages/ScenarioPage';
+import WizardLivePage from './pages/WizardLivePage';
+import OutcomePage from './pages/OutcomePage';
 
 export default function App() {
   return (
@@ -27,6 +30,9 @@ export default function App() {
           <Route path="/policy" element={<PolicyPage />} />
           <Route path="/comparables" element={<ComparablesPage />} />
           <Route path="/property/:id" element={<PropertyDetailPage />} />
+          <Route path="/scenario" element={<ScenarioPage />} />
+          <Route path="/wizard-live" element={<WizardLivePage />} />
+          <Route path="/outcome" element={<OutcomePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
