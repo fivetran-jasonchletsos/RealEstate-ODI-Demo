@@ -1,3 +1,46 @@
+// Anchor Properties — Open Data Infrastructure architecture page.
+//
+// Ported from Clarity Health to give Anchor the same medallion / multi-engine
+// hero. Industry-flavoured for CRE / REIT: Lease Mgmt (SQL Server) + Yardi
+// Financials (Oracle) + Building IoT stream + SEC quarterly REIT filings.
+// Snowflake is primary; Athena/DuckDB/Trino/Spark stay listed as same open-lake
+// reads.
+
+import { AliveMedallion, type SourceNode, type EngineNode } from '../components/AliveMedallion';
+
+// ─── Source data wired into AliveMedallion ──────────────────────────────────
+
+const CRE_SOURCES: SourceNode[] = [
+  { id: 'lease', label: 'Lease Management',   sub: 'SQL Server log-CDC',     logo: 'sqlserver', freshness: '44s lag',   status: 'healthy' },
+  { id: 'fin',   label: 'Yardi Financials',   sub: 'Oracle LogMiner',         logo: 'oracle',    freshness: '2 min lag', status: 'healthy' },
+  { id: 'iot',   label: 'Building IoT',       sub: 'Sensor stream',           logo: 'hl7',       freshness: 'live',      status: 'healthy', streaming: true },
+  { id: 'sec',   label: 'SEC Filings',        sub: 'Quarterly REIT reports',  logo: 'sec',       freshness: '7d lag',    status: 'healthy' },
+];
+
+const CRE_ENGINES: EngineNode[] = [
+  { name: 'Snowflake', active: true, logo: 'snowflake' },
+  { name: 'Athena',                  logo: 'athena' },
+  { name: 'DuckDB',                  logo: 'duckdb' },
+  { name: 'Trino',                   logo: 'trino' },
+  { name: 'Spark',                   logo: 'spark' },
+];
+
+const CRE_ROLES = [
+  { label: 'Asset Mgrs',         sub: 'NOI & occupancy' },
+  { label: 'Leasing',            sub: 'pipeline & TI' },
+  { label: 'Property Ops',       sub: 'maintenance & ESG' },
+  { label: 'Investor Relations', sub: 'REIT reporting' },
+];
+
+// Approximate per-layer stats — sourced from the same Iceberg catalog
+// surfaced in the lower-page table sections. Numbers chosen to match a $42B
+// 8-source CRE portfolio at roughly current Anchor scale.
+const LAYER_STATS = {
+  bronze: { tables: 8, rows: 41_840_000, bytes: 14_200_000_000 },
+  silver: { tables: 6, rows: 18_640_000, bytes:  7_410_000_000 },
+  gold:   { tables: 7, rows:  6_420_000, bytes:  2_120_000_000 },
+};
+
 export default function ArchitecturePage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
@@ -12,7 +55,27 @@ export default function ArchitecturePage() {
         </p>
       </header>
 
-      {/* Sources */}
+      {/* ── Data Flow diagram — the AliveMedallion hero ────────────────────── */}
+      <section className="mb-12">
+        <div className="research-card p-6 sm:p-8">
+          <div className="eyebrow mb-1">Data Flow</div>
+          <h2 className="font-serif text-2xl text-[var(--ink-strong)] mb-6">
+            From eight source systems to one governed gold layer
+          </h2>
+
+          <AliveMedallion
+            sources={CRE_SOURCES}
+            bronze={LAYER_STATS.bronze}
+            silver={LAYER_STATS.silver}
+            gold={LAYER_STATS.gold}
+            engines={CRE_ENGINES}
+            roles={CRE_ROLES}
+            accent="#c8a951"
+          />
+        </div>
+      </section>
+
+      {/* ── Source detail ──────────────────────────────────────────────────── */}
       <section className="mb-12">
         <h2 className="font-serif text-2xl text-[var(--ink-strong)] border-b border-[var(--hairline)] pb-2 mb-5">Sources</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
@@ -29,7 +92,7 @@ export default function ArchitecturePage() {
         </div>
       </section>
 
-      {/* Pipeline diagram */}
+      {/* Pipeline diagram (kept — narrative complement to medallion) */}
       <section className="mb-12">
         <h2 className="font-serif text-2xl text-[var(--ink-strong)] border-b border-[var(--hairline)] pb-2 mb-5">Lineage</h2>
         <div className="research-card p-6 overflow-x-auto">
@@ -103,14 +166,14 @@ export default function ArchitecturePage() {
 }
 
 const SOURCES = [
-  { name: 'Yardi Voyager',        note: 'Property mgmt + accounting. Rent roll, GL, AR/AP, lease abstracts.', tables: '64', cadence: '15-min CDC' },
-  { name: 'MRI Software',         note: 'Legacy property mgmt on ~15% of portfolio. Sunset by 2027.',         tables: '38', cadence: '60-min CDC' },
-  { name: 'VTS',                  note: 'Leasing CRM. Prospects, tours, LOIs, executed leases, broker intel.', tables: '24', cadence: '15-min API' },
-  { name: 'Procore',              note: 'Capital projects. Budgets, spend-to-date, forecast complete.',       tables: '31', cadence: '60-min API' },
-  { name: 'Honeywell BMS',        note: 'Building telemetry. Energy, water, comfort sensors, air quality.',   tables: '12', cadence: 'Streaming, 5-min buffer' },
-  { name: 'CoStar',               note: 'Market data. Rent comps, supply pipeline, submarket fundamentals.',  tables: '28', cadence: 'Daily file' },
-  { name: 'Real Capital Analytics', note: 'Transaction comps and cap-rate trends by metro and asset class.',  tables: '36', cadence: 'Daily file' },
-  { name: 'S&P Credit Ratings',   note: 'Tenant credit feed. Rating actions, outlook, watchlist placements.', tables: '14', cadence: 'Real-time push' },
+  { name: 'Yardi Voyager',          note: 'Property mgmt + accounting. Rent roll, GL, AR/AP, lease abstracts.',  tables: '64', cadence: '15-min CDC' },
+  { name: 'MRI Software',           note: 'Legacy property mgmt on ~15% of portfolio. Sunset by 2027.',          tables: '38', cadence: '60-min CDC' },
+  { name: 'VTS',                    note: 'Leasing CRM. Prospects, tours, LOIs, executed leases, broker intel.', tables: '24', cadence: '15-min API' },
+  { name: 'Procore',                note: 'Capital projects. Budgets, spend-to-date, forecast complete.',        tables: '31', cadence: '60-min API' },
+  { name: 'Honeywell BMS',          note: 'Building telemetry. Energy, water, comfort sensors, air quality.',    tables: '12', cadence: 'Streaming, 5-min buffer' },
+  { name: 'CoStar',                 note: 'Market data. Rent comps, supply pipeline, submarket fundamentals.',   tables: '28', cadence: 'Daily file' },
+  { name: 'Real Capital Analytics', note: 'Transaction comps and cap-rate trends by metro and asset class.',     tables: '36', cadence: 'Daily file' },
+  { name: 'S&P Credit Ratings',     note: 'Tenant credit feed. Rating actions, outlook, watchlist placements.',  tables: '14', cadence: 'Real-time push' },
 ];
 
 const LINEAGE = [
