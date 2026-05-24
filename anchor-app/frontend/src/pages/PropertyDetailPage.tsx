@@ -209,7 +209,7 @@ export default function PropertyDetailPage() {
                 color: 'var(--ink-soft)',
               }}
             >
-              Scored via CORTEX.COMPLETE tag-vector similarity
+              Scored via Snowflake on the dbt-governed gold layer
             </div>
           </div>
         </aside>

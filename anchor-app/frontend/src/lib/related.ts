@@ -2,8 +2,8 @@
 //
 // Computes a top-K nearest-neighbor list for each property using CRE comp
 // dimensions: asset class, metro (submarket), size band, cap-rate band,
-// and vintage band.  Mirrors what a Cortex embedding pipeline would produce
-// in production — the math runs locally so the static site ships the
+// and vintage band.  Mirrors the similarity logic agents reading the gold layer
+// would apply in production — the math runs locally so the static site ships the
 // deal network without a runtime API.
 
 // ---------------------------------------------------------------------------

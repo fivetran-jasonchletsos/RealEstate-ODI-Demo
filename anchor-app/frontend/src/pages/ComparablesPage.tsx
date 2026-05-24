@@ -494,9 +494,8 @@ function DefaultPanel({ nodeCount, edgeCount }: { nodeCount: number; edgeCount: 
       </p>
       <div style={{ borderTop: '1px solid rgba(200,169,81,0.1)', paddingTop: '1rem', marginTop: '0.5rem' }}>
         <p className="text-xs leading-relaxed" style={{ color: 'rgba(245,241,232,0.35)' }}>
-          Similarity computed from{' '}
-          <span style={{ color: 'var(--gold)' }}>CORTEX.COMPLETE</span> tag-vector
-          overlap across asset class (1.4x), metro (1.2x), size band (0.7x), cap-rate
+          Similarity computed from agents reading the gold layer — weighted overlap
+          across asset class (1.4x), metro (1.2x), size band (0.7x), cap-rate
           band (0.5x), and value tier (0.2x). Top-8 comps per asset, undirected union.
         </p>
       </div>
@@ -614,12 +613,11 @@ function SelectedPanel({
         </ol>
       </div>
 
-      {/* Cortex note */}
+      {/* Scoring note */}
       <div style={{ borderTop: '1px solid rgba(200,169,81,0.1)', marginTop: '1.25rem', paddingTop: '1rem' }}>
         <p className="text-xs leading-relaxed" style={{ color: 'rgba(245,241,232,0.3)' }}>
-          Comps scored via{' '}
-          <span style={{ color: 'var(--gold)' }}>CORTEX.COMPLETE</span> tag-vector
-          similarity. {nodeCount} assets, {edgeCount} edges.
+          Comps scored via Snowflake on the dbt-governed gold layer.
+          {' '}{nodeCount} assets, {edgeCount} edges.
         </p>
       </div>
     </div>
