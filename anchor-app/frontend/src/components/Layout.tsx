@@ -240,7 +240,7 @@ export default function Layout() {
           <div>
             <div className="eyebrow-light mb-2">Data Pipeline</div>
             <p className="leading-relaxed text-white/70">
-              Yardi Voyager, MRI, VTS, Procore, Honeywell BMS, CoStar, S&amp;P feeds. Landed via Fivetran into Apache Iceberg on S3, transformed with dbt across bronze, silver, and gold marts, served from Snowflake.
+              Yardi Voyager, MRI, VTS, Procore, Honeywell BMS, CoStar, S&amp;P feeds → Fivetran → Iceberg on S3 → dbt → Great Expectations → Snowflake / Athena / Trino → Cortex.
             </p>
           </div>
           <div>
