@@ -81,8 +81,9 @@ export default function OutcomePage() {
 
   useEffect(() => {
     fetch(((import.meta as any).env?.BASE_URL ?? '/').replace(/\/$/, '') + '/data/outcome.json')
-      .then(r => r.json())
-      .then(setO);
+      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then(setO)
+      .catch(() => {});
   }, []);
 
   if (!o) {
