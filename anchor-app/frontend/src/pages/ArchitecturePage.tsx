@@ -6,7 +6,9 @@
 // Snowflake is primary; Athena/DuckDB/Trino/Spark stay listed as same open-lake
 // reads.
 
+import { Link } from 'react-router-dom';
 import { AliveMedallion, type SourceNode, type EngineNode } from '../components/AliveMedallion';
+import ProductStageRail from '../components/ProductStageRail';
 
 // ─── Source data wired into AliveMedallion ──────────────────────────────────
 
@@ -62,6 +64,8 @@ export default function ArchitecturePage() {
           <h2 className="font-serif text-2xl text-[var(--ink-strong)] mb-6">
             From eight source systems to one governed gold layer
           </h2>
+
+          <ProductStageRail accent="#0e7490" />
 
           <AliveMedallion
             sources={CRE_SOURCES}
@@ -154,6 +158,9 @@ export default function ArchitecturePage() {
         </div>
       </section>
 
+      {/* ── Activations — NewCo native reverse-ETL, right after Transformations ── */}
+      <ActivationsPanel />
+
       <section className="rounded-sm bg-[var(--midnight)] text-white p-6">
         <div className="eyebrow-light mb-2">Why this matters for a REIT</div>
         <p className="font-serif text-xl leading-snug">
@@ -162,6 +169,63 @@ export default function ArchitecturePage() {
         </p>
       </section>
     </div>
+  );
+}
+
+// =============================================================================
+// ActivationsPanel — the gold layer doesn't just get queried, it gets acted on.
+// Trigger: S&P downgrade/watchlist + lease expiry <180d + 3%+ of building NOI,
+// joined nightly on fct_tenant_credit_risk. Destination: VTS, the leasing CRM.
+// =============================================================================
+function ActivationsPanel() {
+  const TRIGGER = "A tenant record in the gold layer flips to high_priority_renewal_risk = true when three conditions join: an S&P credit-rating downgrade or watchlist placement, lease expiry within 180 days (fct_lease_expiry_profile), and the tenant represents 3%+ of that building's NOI (fct_property_noi_monthly) — computed nightly on fct_tenant_credit_risk.";
+  const DESTINATION = 'VTS · Tenant, Lease, Deal, Task custom fields';
+  const OUTCOME = "Leasing reps get a 164-day head start on renewal conversations for tenants who are both credit-downgraded and lease-expiring, instead of finding out at the next quarterly portfolio review — protecting the same $14M in at-risk NOI already flagged on the Investment Committee dashboard, and cutting time-to-outreach from a 45–60 day manual report cycle to same-day.";
+
+  return (
+    <section className="mb-12">
+      <div className="research-card overflow-hidden">
+        <header className="flex items-start justify-between gap-4 p-6 border-b border-[var(--hairline)]">
+          <div>
+            <div className="eyebrow" style={{ color: '#0e7490' }}>Activations · NewCo</div>
+            <h2 className="font-serif text-2xl text-[var(--ink-strong)] mt-0.5">
+              The gold layer doesn't just get queried. It gets acted on.
+            </h2>
+            <p className="mt-2 text-sm text-[var(--ink-muted)] max-w-3xl leading-relaxed">
+              Activations is the fourth native stage in NewCo, immediately after Transformations. It
+              reads straight from the same Iceberg gold tables dbt just built and syncs the result to
+              an operational system of record &mdash; no separate reverse-ETL vendor, no second copy of the
+              data, no second connector to maintain.
+            </p>
+          </div>
+          <div className="inline-flex items-center gap-1.5 rounded-sm px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white shrink-0" style={{ background: '#0e7490' }}>
+            Activations
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[var(--hairline-soft)]">
+          <div className="p-5">
+            <div className="text-[10px] uppercase tracking-[0.16em] text-[var(--ink-soft)] font-semibold mb-2">Trigger · gold layer</div>
+            <p className="text-sm text-[var(--ink)] leading-relaxed">{TRIGGER}</p>
+          </div>
+          <div className="p-5">
+            <div className="text-[10px] uppercase tracking-[0.16em] text-[var(--ink-soft)] font-semibold mb-2">Destination</div>
+            <p className="text-sm text-[var(--ink)] leading-relaxed font-mono">{DESTINATION}</p>
+          </div>
+          <div className="p-5">
+            <div className="text-[10px] uppercase tracking-[0.16em] text-[var(--ink-soft)] font-semibold mb-2">Outcome</div>
+            <p className="text-sm text-[var(--ink)] leading-relaxed">{OUTCOME}</p>
+          </div>
+        </div>
+
+        <div className="px-5 py-3 border-t border-[var(--hairline-soft)] flex items-center justify-between text-[11px] text-[var(--ink-soft)]" style={{ background: 'var(--paper-deep)' }}>
+          <span>Connections &rarr; Destinations &rarr; Transformations &rarr; <strong style={{ color: '#0e7490' }}>Activations</strong> &middot; one platform, one lineage graph</span>
+          <Link to="/activations-live" className="uppercase tracking-wider font-semibold hover:underline" style={{ color: '#0e7490' }}>
+            Watch it sync &rarr;
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
 

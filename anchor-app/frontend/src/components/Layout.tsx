@@ -31,11 +31,12 @@ const NAV: NavEntry[] = [
     kind: 'group',
     label: 'ODI',
     rootTo: '/architecture',
-    matchPrefixes: ['/architecture', '/pipeline', '/about'],
+    matchPrefixes: ['/architecture', '/pipeline', '/about', '/activations-live'],
     children: [
-      { to: '/architecture', label: 'Architecture' },
-      { to: '/pipeline',     label: 'Pipeline' },
-      { to: '/about',        label: 'About' },
+      { to: '/architecture',     label: 'Architecture' },
+      { to: '/pipeline',         label: 'Pipeline' },
+      { to: '/about',            label: 'About' },
+      { to: '/activations-live', label: 'Activations' },
     ],
   },
 ];
@@ -240,8 +241,19 @@ export default function Layout() {
           <div>
             <div className="eyebrow-light mb-2">Data Pipeline</div>
             <p className="leading-relaxed text-white/70">
-              Yardi Voyager, MRI, VTS, Procore, Honeywell BMS, CoStar, S&amp;P feeds → Fivetran → Iceberg on S3 → dbt labs + dbt-wizard → Great Expectations → Snowflake / Athena / Trino. Humans and run-time agents read the same gold layer.
+              Yardi Voyager, MRI, VTS, Procore, Honeywell BMS, CoStar, S&amp;P feeds → Fivetran → Iceberg on S3 → dbt labs + dbt-wizard → Great Expectations → Snowflake / Athena / Trino → run-time agents → NewCo Activations → VTS. Humans and run-time agents read the same gold layer.
             </p>
+            <div className="mt-3 flex items-center gap-2 text-[11px]">
+              <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/15 bg-white/5 px-2 py-1">
+                <span className="inline-flex items-center justify-center h-4 px-1 rounded text-[9px] font-bold text-white" style={{ background: '#0073FF' }}>N</span>
+                <span className="font-semibold text-white/80">NewCo</span>
+              </span>
+              <span className="text-white/40">+</span>
+              <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/15 bg-white/5 px-2 py-1">
+                <span className="inline-flex items-center justify-center h-4 px-1 rounded text-[9px] font-bold text-white" style={{ background: '#29B5E8' }}>❄</span>
+                <span className="font-semibold text-white/80">Snowflake</span>
+              </span>
+            </div>
           </div>
           <div>
             <div className="eyebrow-light mb-2">Open Standards</div>

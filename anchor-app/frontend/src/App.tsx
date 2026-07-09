@@ -14,6 +14,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import ScenarioPage from './pages/ScenarioPage';
 import WizardLivePage from './pages/WizardLivePage';
 import OutcomePage from './pages/OutcomePage';
+import ActivationLivePage from './pages/ActivationLivePage';
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
           <Route path="/scenario" element={<ScenarioPage />} />
           <Route path="/wizard-live" element={<WizardLivePage />} />
           <Route path="/outcome" element={<OutcomePage />} />
+          <Route path="/activations-live" element={<ActivationLivePage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
